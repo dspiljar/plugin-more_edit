@@ -75,14 +75,15 @@
             $this->dao->insert(DB_TABLE_PREFIX.'t_pages', $array);
             $id = $this->dao->insertedId();
 
-            $this->dao->insert(DB_TABLE_PREFIX.'t_pages_description', $array);
-
             $array_description = array(
                 'fk_i_pages_id'     => $id,
                 'fk_c_locale_code'  => osc_language(),
                 's_title'           => '{WEB_TITLE} - Notification of ad: {ITEM_TITLE}',
                 's_text'            => '<p>Hi Admin!</p>\r\n<p> </p>\r\n<p>We just published an item ({ITEM_TITLE}) on {WEB_TITLE} from user {USER_NAME} ( {ITEM_URL} ).</p>\r\n<p>Edit it here : {EDIT_LINK}</p>\r\n<p> </p>\r\n<p>Thanks</p>'
             );
+
+            $this->dao->insert(DB_TABLE_PREFIX.'t_pages_description', $array_description);
+
         }
 
         /**
