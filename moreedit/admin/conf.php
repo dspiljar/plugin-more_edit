@@ -33,7 +33,7 @@
         } else {
             ob_get_clean();
             osc_add_flash_ok_message(__('Congratulations. The plugin is now configured', 'moreedit'), 'admin');
-            osc_admin_render_plugin(osc_route_admin_url('moredit-conf'));
+            osc_admin_render_plugin(osc_route_admin_url('moreedit-conf'));
         }
     }
 ?>
@@ -42,14 +42,14 @@
         <div style="float: left; width: 100%;">
             <fieldset>
                 <legend><?php _e('More Edit Options', 'moreedit'); ?></legend>
-                <form name="moreedit_form" id="moreedit_form" action="<?php echo osc_admin_base_url(true); ?>" method="POST" enctype="multipart/form-data" >
+                <form name="moreedit_form" id="moreedit_form" action="<?php echo osc_admin_base_url(true); ?>" method="post" >
                     <div style="float: left; width: 50%;">
                     <input type="hidden" name="page" value="plugins" />
                     <input type="hidden" name="action" value="renderplugin" />
                     <?php if(osc_version()<320) { ?>
                         <input type="hidden" name="file" value="<?php echo osc_plugin_folder(__FILE__); ?>conf.php" />
                     <?php } else { ?>
-                        <input type="hidden" name="route" value="moredit-conf" />
+                        <input type="hidden" name="route" value="moreedit-conf" />
                     <?php } ?>
                     <input type="hidden" name="plugin_action" value="done" />
                         <input style="height: 20px; padding-left: 4px;padding-top: 4px;" type="checkbox" <?php echo (osc_get_preference('moderate_all', 'moreedit') ? 'checked="true"' : ''); ?> name="moderate_all" id="moderate_all" value="1" />
