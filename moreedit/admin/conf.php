@@ -33,7 +33,7 @@
         } else {
             ob_get_clean();
             osc_add_flash_ok_message(__('Congratulations. The plugin is now configured', 'moreedit'), 'admin');
-            osc_admin_render_plugin(osc_route_admin_url('moreedit-conf'));
+            osc_redirect_to(osc_route_admin_url('moreedit-conf'));
         }
     }
 ?>
