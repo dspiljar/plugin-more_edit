@@ -97,7 +97,8 @@ function moreedit_posted_item($item)
         if($error=='') {
             Session::newInstance()->_set('moreedit_fm_info', __('Your ad needs to be approved by the administrator, it could take a while until it appear on the website', 'moreedit') );
         }
-        Item::newInstance()->update(array('b_enabled' => 0), array('pk_i_id' => $item['pk_i_id']));
+        $mItem = new ItemActions(true);
+        $mItem->disable($item['pk_i_id']);
     }
 }
 
@@ -142,7 +143,8 @@ function moreedit_moderate_edit($item_)
         osc_sendMail($emailParams);
     }
     if (osc_get_preference('moderate_edit', 'moreedit') == '1') {
-        Item::newInstance()->update(array('b_enabled' => 0), array('pk_i_id' => $item_id));
+      $mItem = new ItemActions(true);
+      $mItem->disable($item['pk_i_id']);
     }
 }
 
@@ -177,7 +179,8 @@ function moreedit_edited_item($item) {
         if($error=='') {
             Session::newInstance()->_set('moreedit_fm_info', __('Your ad needs to be approved by the administrator, it could take a while until it appear on the website', 'moreedit') );
         }
-        Item::newInstance()->update(array('b_enabled' => 0), array('pk_i_id' => $item['pk_i_id']));
+        $mItem = new ItemActions(true);
+        $mItem->disable($item['pk_i_id']);
     }
 }
 
